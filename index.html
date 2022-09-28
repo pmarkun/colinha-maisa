@@ -8,20 +8,21 @@
             #santinhoRender {
                 margin-left:-9000px;
                 overflow: hidden;
-                width:1024;
-                height:1280;
+                width:512;
+                height:640;
                 background-image: url("santinhoBg.jpg");
+                background-size: contain;
             }
 
             .votos {
                 position: relative;
-                top:320px;
-                left:350px;
+                top:160px;
+                left:175px;
             }
             .voto { 
-                font-size:64px;
-                letter-spacing: 60px;
-                padding-bottom:73px;
+                font-size:32px;
+                letter-spacing: 30px;
+                padding-bottom:36px;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -76,7 +77,11 @@
 
                 html2canvas(document.querySelector("#santinhoRender")).then(canvas => {
                     $("#santinhoFinal").html("");
-                    $("#santinhoFinal").append(canvas);
+                    var img = new Image();
+                    img.crossOrigin="anonymous"
+                    img.src = canvas.toDataURL("image/png");
+                    img.width = window.innerWidth;
+                    $("#santinhoFinal").append(img);
                 });
                 
             })    

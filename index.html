@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <style>
+            body {
+                height:1280px;
+                overflow: hidden;
+            }
+            #santinhoRender {
+                margin-left:-9000px;
+                overflow: hidden;
+                width:1024;
+                height:1280;
+                background-image: url("santinhoBg.jpg");
+            }
+
+            .votos {
+                position: relative;
+                top:320px;
+                left:350px;
+            }
+            .voto { 
+                font-size:64px;
+                letter-spacing: 60px;
+                padding-bottom:73px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="html2canvas.min.js"></script>
+
+    </head>
+    <body>
+        <div id="santinhoGen">
+            <div id="santinhoFinal">
+
+            </div>
+            <div id="santinhoRender">
+                <div class="votos">
+                    <div class="voto federal">
+                        1888
+                    </div>
+                    <div class="voto estadual">
+                        &nbsp;
+                    </div>
+                    <div class="voto senador">
+                        400
+                    </div>
+                    <div class="voto governador">
+                        13
+                    </div>
+                    <div class="voto presidente">
+                        13
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function (e) {
+                const urlParams = new URLSearchParams(window.location.search);
+                var votos = {
+                    'federal' : urlParams.get('federal'),
+                    'estadual' : urlParams.get('estadual'),
+                    'senador' : urlParams.get('senador'),
+                    'governador' : urlParams.get('governador'),
+                    'presidente' : urlParams.get('presidente'),
+                }
+                for (v in votos) {
+                    console.log(votos[v].length);
+                    if (votos[v].length == 0) {
+                        console.log("Falta escolher " + v)
+                        $("."+v).html("&nbsp;");
+                    }
+                    else {
+                        $("."+v).text(votos[v]);
+                    }
+                }
+
+                html2canvas(document.querySelector("#santinhoRender")).then(canvas => {
+                    $("#santinhoFinal").html("");
+                    $("#santinhoFinal").append(canvas);
+                });
+                
+            })    
+        </script>
+    </body>
+</html>

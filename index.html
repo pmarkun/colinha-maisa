@@ -10,9 +10,9 @@
                 color:#06413A;
             }
             #santinhoRender {
-                margin-left:-9000;   
+                /*margin-left:-9000;*/
                 overflow: hidden;
-                width:715;
+                width:890px;
                 height:1280;
                 background-image: url("santinhoBg.jpg");
                 background-size: contain;
@@ -20,29 +20,29 @@
 
             .votos {
                 position: relative;
-                top:430px;
-                left:110px;
+                top:320px;
+                left:85px;
             }
 
             .voto { 
                 font-size:72px;
-                letter-spacing: 70px;
+                letter-spacing: 40px;
             }
 
             .estadual {
-                margin-top:100px;
+                margin-top:80px;
             }
 
             .senador {
-                margin-top:75px;
+                margin-top:50px;
             }
 
             .governador {
-                margin-top:60px;
+                margin-top:50px;
             }
 
             .presidente {
-                margin-top:65px;
+                margin-top:50px;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -101,7 +101,7 @@
                     img.crossOrigin="anonymous"
                     img.src = canvas.toDataURL("image/png");
                     img.height = window.innerHeight;
-                    $("#santinhoFinal").append(img);
+                    //$("#santinhoFinal").append(img);
                 });
                 
             })    
